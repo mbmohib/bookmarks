@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy
 from .models import Profile
+from datetime import date
+
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -32,3 +35,17 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('date_of_birth', 'address')
+        labels = {
+            'address': ugettext_lazy('Your Location'),
+        }
+        help_texts = {
+            'date_of_birth': ugettext_lazy('Date format should be in: "year-month-date", Ex: 1995-02-15, Age must be more than 15 years'),
+        }
+
+    def clean_date_of_birth(self):
+        dob = self.cleaned_data['date_of_birth']
+        today = date.today()
+        age = today.year - dob.year
+        if (dob.year + 15, dob.month, dob.day) > (today.year, today.month, today.day):
+            raise forms.ValidationError('Must be at least 15 years old to register')
+        return dob

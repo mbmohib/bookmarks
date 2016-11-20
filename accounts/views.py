@@ -15,7 +15,7 @@ def registration(request):
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         profile_form = ProfileForm(request.POST)
-        if user_form.is_valid() and profile_form.is_valid:
+        if user_form.is_valid() and profile_form.is_valid():
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password1'])
             new_user.save()
@@ -27,5 +27,5 @@ def registration(request):
             return HttpResponse(html)
     else:
         user_form = UserRegistrationForm()
-        profile_form = ProfileForm
-    return render(request, "registration/registration.html", {'user_form': user_form, 'profile_form': ProfileForm})
+        profile_form = ProfileForm()
+    return render(request, "registration/registration.html", {'user_form': user_form, 'profile_form': profile_form})
