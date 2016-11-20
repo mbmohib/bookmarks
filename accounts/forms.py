@@ -18,8 +18,10 @@ class UserRegistrationForm(forms.ModelForm):
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
+        if len(password2) < 8:
+            raise forms.ValidationError("Passwords at least 8 charecters long")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
+                raise forms.ValidationError("Passwords don't match")
         return password2
 
     def clean_email(self):
