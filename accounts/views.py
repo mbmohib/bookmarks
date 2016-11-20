@@ -25,10 +25,7 @@ def registration(request):
             # messages.success(request, 'Profile updated successfully')
             html = "<html><body>Profile updated successfully</body></html>"
             return HttpResponse(html)
-        else:
-            return HttpResponse("Wrong Password")
     else:
         user_form = UserRegistrationForm()
         profile_form = ProfileForm
-        contex = {'user_form': user_form, 'profile_form': ProfileForm}
-    return render(request, "registration/registration.html", contex)
+    return render(request, "registration/registration.html", {'user_form': user_form, 'profile_form': ProfileForm})
