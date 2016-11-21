@@ -4,6 +4,7 @@ import datetime
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import ProfileForm, UserRegistrationForm, ProfileEditForm, UserEditForm
 
@@ -55,3 +56,9 @@ def edit(request):
     return render(
         request, "edit.html", {
             'user_form': user_form, 'profile_form': profile_form})
+
+
+@login_required
+def profile(request):
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
