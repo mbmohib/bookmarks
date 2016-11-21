@@ -1,15 +1,18 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .forms import UserRegistrationForm, ProfileForm
 # from django.contrib import messages
 import datetime
 
-# Create your views here.
+from django.http import HttpResponse
+from django.shortcuts import render
 
+from .forms import ProfileForm, UserRegistrationForm
+
+
+# Create your views here.
 def Test(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
     return HttpResponse(html)
+
 
 def registration(request):
     if request.method == 'POST':
@@ -28,4 +31,6 @@ def registration(request):
     else:
         user_form = UserRegistrationForm()
         profile_form = ProfileForm()
-    return render(request, "registration/registration.html", {'user_form': user_form, 'profile_form': profile_form})
+    return render(
+        request, "registration/registration.html", {
+            'user_form': user_form, 'profile_form': profile_form})
