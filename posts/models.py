@@ -12,7 +12,7 @@ class Catagory(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'catagory' 
+        verbose_name_plural = 'catagory'
 
 
 class UrlPost(models.Model):
