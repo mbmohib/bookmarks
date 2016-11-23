@@ -1,10 +1,9 @@
-# from django.contrib import messages
 import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+# from django.contrib import messages
 
 from .forms import ProfileForm, UserRegistrationForm, ProfileEditForm, UserEditForm
 
@@ -31,8 +30,11 @@ def registration(request):
             html = "<html><body>Profile updated successfully</body></html>"
             return HttpResponse(html)
     else:
-        user_form = UserRegistrationForm()
-        profile_form = ProfileForm()
+        if request.user.is_authenticated():
+            return render(request, 'registration/log_out_first.html')
+        else:
+            user_form = UserRegistrationForm()
+            profile_form = ProfileForm()
     return render(
         request, "registration/registration.html", {
             'user_form': user_form, 'profile_form': profile_form})
