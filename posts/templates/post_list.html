@@ -1,5 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<ul>
+    {% for catagory in catagories %}
+        {{ catagory }}
+        {% empty %}
+        <li>Sorry, no bookmarks found!</li>
+    {% endfor %}
+</ul>
+{# <ul>
+    {% for catagory in catagories %}
+        {{ catagory }}
+        {% empty %}
+        <li>Sorry, no bookmarks found!</li>
+    {% endfor %}
+</ul> #}
 {% endblock content %}
