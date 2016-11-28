@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load posts_filter %}
+
+{% block content %}
+{% for category in categories %}
+    <ul>
+        <li>{{ category.title }}</li>
+        <li>{{ category.created }}</li>
+    </ul>
+{% endfor %}
+
+{% endblock content %}

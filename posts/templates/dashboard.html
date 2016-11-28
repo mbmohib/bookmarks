@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url "profile" %}">Profile</a>
+<ul>
+    <li><a href="{% url "profile" %}">Profile</a></li>
+    <li><a href="{% url "posts:create_catagory" %}">Create Category</a></li>
+    <li><a href="{% url "posts:create_post" %}">Add Url</a></li>
+    <li><a href="{% url "posts:category_list" %}">Category List</a></li>
+    <li><a href="{% url "post_list" username=user.username %}">Url List</a></li>
+</ul>
 {% endblock content %}

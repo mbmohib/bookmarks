@@ -5,12 +5,14 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 from .forms import CatagoryForm, UrlPostForm
+from .models import Catagory
 
 
 # Create your views here.
 @login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    user = request.user
+    return render(request, 'dashboard.html', {'user': user})
 
 
 def post_list(request, username):
@@ -21,6 +23,13 @@ def post_list(request, username):
         posts.append(catagory.urlpost_set.all())
     return render(request, 'post_list.html', {
             'catagories': catagories, 'posts': posts})
+
+
+@login_required
+def category_list(request):
+    categories = Catagory.objects.filter(user=request.user)
+    return render(request, 'category_list.html', {
+            'categories': categories})
 
 
 @login_required
@@ -53,5 +62,5 @@ def create_post(request):
         else:
             return HttpResponse("Error Occured")
     else:
-        post_form = UrlPostForm()
+        post_form = UrlPostForm(user=request.user)
     return render(request, 'create_post.html', {'post_form': post_form})
