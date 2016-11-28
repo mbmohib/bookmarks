@@ -1,11 +1,11 @@
 from django.forms import ModelForm
-from .models import Catagory, UrlPost
+from .models import Category, UrlPost
 
 
-class CatagoryForm(ModelForm):
+class CategoryForm(ModelForm):
 
     class Meta:
-        model = Catagory
+        model = Category
         fields = ['title']
 
 
@@ -13,10 +13,10 @@ class UrlPostForm(ModelForm):
 
     class Meta:
         model = UrlPost
-        fields = ['title', 'slug', 'url', 'status', 'note', 'catagory']
+        fields = ['title', 'slug', 'url', 'status', 'note', 'category']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super(UrlPostForm, self).__init__(*args, **kwargs)
-        self.fields['catagory'].queryset = Catagory.objects.filter(
+        self.fields['category'].queryset = Category.objects.filter(
                                     user=user)

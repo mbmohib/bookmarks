@@ -1,16 +1,16 @@
 from django.contrib import admin
 
-from .models import Catagory, UrlPost
+from .models import Category, UrlPost
 
 
-class CatagoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title', 'user', 'updated', )
 
 
 class UrlPostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'status', 'user', 'catagory', 'updated')
+    list_display = ('title', 'status', 'user', 'category', 'updated')
     prepopulated_fields = {"slug": ("title",)}
 
 # Register your models here.
-admin.site.register(Catagory, CatagoryAdmin)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(UrlPost, UrlPostAdmin)

@@ -1,18 +1,14 @@
-import datetime
-
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-# from django.contrib import messages
 
-from .forms import ProfileForm, UserRegistrationForm, ProfileEditForm, UserEditForm
+from .forms import (
+    ProfileForm, UserRegistrationForm, ProfileEditForm, UserEditForm)
 
 
 # Create your views here.
-def Test(request):
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
-    return HttpResponse(html)
+def accounts(request):
+    return redirect('posts:dashboard')
 
 
 def registration(request):
@@ -26,9 +22,8 @@ def registration(request):
             profile = profile_form.save(commit=False)
             profile.user = new_user
             profile.save()
-            # messages.success(request, 'Profile updated successfully')
-            html = "<html><body>Profile updated successfully</body></html>"
-            return HttpResponse(html)
+            messages.success(request, 'Profile created successfully')
+            return redirect('posts:dashboard')
     else:
         if request.user.is_authenticated():
             return render(request, 'registration/log_out_first.html')

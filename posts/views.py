@@ -1,11 +1,11 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse
+from django.contrib import messages
 
-from .forms import CatagoryForm, UrlPostForm
-from .models import Catagory
+from .forms import CategoryForm, UrlPostForm
+from .models import Category
 
 
 # Create your views here.
@@ -18,35 +18,35 @@ def dashboard(request):
 def post_list(request, username):
     posts = []
     user = User.objects.get(username=username)
-    catagories = user.user_cat.all()
-    for catagory in catagories:
-        posts.append(catagory.urlpost_set.all())
+    categories = user.user_cat.all()
+    for category in categories:
+        posts.append(category.urlpost_set.all())
     return render(request, 'post_list.html', {
-            'catagories': catagories, 'posts': posts})
+            'categories': categories, 'posts': posts})
 
 
 @login_required
 def category_list(request):
-    categories = Catagory.objects.filter(user=request.user)
+    categories = Category.objects.filter(user=request.user)
     return render(request, 'category_list.html', {
             'categories': categories})
 
 
 @login_required
-def create_catagory(request):
+def create_category(request):
     if request.method == "POST":
-        catagory_form = CatagoryForm(request.POST)
-        if catagory_form.is_valid():
-            new_entry = catagory_form.save(commit=False)
+        category_form = CategoryForm(request.POST)
+        if category_form.is_valid():
+            new_entry = category_form.save(commit=False)
             new_entry.user = request.user
             new_entry.save()
-        else:
-            return HttpResponse("Error Occured")
+            messages.success(request, 'Category created successfully')
+            return redirect('posts:category_list')
     else:
-        catagory_form = CatagoryForm()
+        category_form = CategoryForm()
     return render(
-        request, 'catagory_form.html', {
-            'catagory_form': catagory_form
+        request, 'category_form.html', {
+            'category_form': category_form
         }
     )
 
@@ -54,13 +54,13 @@ def create_catagory(request):
 @login_required
 def create_post(request):
     if request.method == 'POST':
-        post_form = UrlPostForm(request.POST)
+        post_form = UrlPostForm(request.POST, user=request.user)
         if post_form.is_valid():
             new_post = post_form.save(commit=False)
             new_post.user = request.user
             new_post.save()
-        else:
-            return HttpResponse("Error Occured")
+            messages.success(request, 'Url stored successfully')
+            return redirect('posts:dashboard')
     else:
         post_form = UrlPostForm(user=request.user)
     return render(request, 'create_post.html', {'post_form': post_form})

@@ -2,8 +2,8 @@
 {% load posts_filter %}
 
 {% block content %}
-{% for catagory in catagories %}
-    {{ catagory.title }}
+{% for category in categories %}
+    {{ category.title }}
     <ul>
         {% with forloop.counter0 as var %}
         <ul>

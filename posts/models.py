@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Catagory(models.Model):
+class Category(models.Model):
     user = models.ForeignKey(
             User, related_name='user_cat', on_delete=models.CASCADE)
     title = models.CharField(max_length=15)
@@ -15,7 +15,7 @@ class Catagory(models.Model):
         return self.title
 
     class Meta:
-        verbose_name_plural = 'catagory'
+        verbose_name_plural = 'category'
 
 
 class UrlPost(models.Model):
@@ -25,7 +25,7 @@ class UrlPost(models.Model):
     )
     user = models.ForeignKey(
             User, related_name='user_post', on_delete=models.CASCADE)
-    catagory = models.ForeignKey(Catagory, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     url = models.URLField()
