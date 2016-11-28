@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Catagory(models.Model):
     user = models.ForeignKey(
             User, related_name='user_cat', on_delete=models.CASCADE)
-    title = models.CharField(max_length=15, unique=True)
+    title = models.CharField(max_length=15)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 

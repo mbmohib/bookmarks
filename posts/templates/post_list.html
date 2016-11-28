@@ -1,18 +1,18 @@
 {% extends "base.html" %}
+{% load posts_filter %}
 
 {% block content %}
-<ul>
-    {% for catagory in catagories %}
-        {{ catagory }}
-        {% empty %}
-        <li>Sorry, no bookmarks found!</li>
-    {% endfor %}
-</ul>
-{# <ul>
-    {% for catagory in catagories %}
-        {{ catagory }}
-        {% empty %}
-        <li>Sorry, no bookmarks found!</li>
-    {% endfor %}
-</ul> #}
+{% for catagory in catagories %}
+    {{ catagory.title }}
+    <ul>
+        {% with forloop.counter0 as var %}
+        <ul>
+            {% for post in posts|lookup:var %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% endwith %}
+    </ul>
+{% endfor %}
+
 {% endblock content %}
