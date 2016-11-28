@@ -20,7 +20,18 @@ def post_list(request, username):
     user = User.objects.get(username=username)
     categories = user.user_cat.all()
     for category in categories:
-        posts.append(category.urlpost_set.all())
+        posts.append(category.urlpost_set.filter(status='public'))
+    return render(request, 'post_list.html', {
+            'categories': categories, 'posts': posts})
+
+
+@login_required
+def all_post(request):
+    posts = []
+    user = request.user
+    categories = user.user_cat.all()
+    for category in categories:
+        posts.append(category.urlpost_set.filter())
     return render(request, 'post_list.html', {
             'categories': categories, 'posts': posts})
 

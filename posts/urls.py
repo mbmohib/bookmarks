@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'create-category/$', views.create_category, name='create_category'),
     url(r'create-post/$', views.create_post, name='create_post'),
     url(r'category-list/$', views.category_list, name='category_list'),
+    url(r'post-list/$', views.all_post, name='all_post'),
 ]
