@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-
+{% extends "base_post.html" %}
+{% load staticfiles %}
 {% block content %}
 {% if messages %}
 <ul class="messages">
@@ -8,13 +8,42 @@
     {% endfor %}
 </ul>
 {% endif %}
-<ul>
-    <li><a href="{% url "profile" %}">Profile</a></li>
-    <li><a href="{% url "posts:create_category" %}">Create Category</a></li>
-    <li><a href="{% url "posts:create_post" %}">Store Url</a></li>
-    <li><a href="{% url "posts:category_list" %}">Category List</a></li>
-    <li><a href="{% url "post_list" username=user.username %}">Url List (Public)</a></li>
-    <li><a href="{% url "posts:all_post" %}">All Urls</a></li>
-    <li><a href="{% url "logout" %}">Logout</a></li>
-</ul>
+<div class="dashboard_item_list">
+    <ul>
+        <li>
+            <a href="{% url "profile" %}"><img src="{% static 'posts/images/view_profile.png' %}" alt="" /></a>
+            <p>Profile</p>
+        </li>
+        <li>
+            <a href="{% url "posts:create_category" %}"><img src="{% static 'posts/images/create_category.png' %}" alt="" /></a>
+            <p>Create Category</p>
+        </li>
+        <li>
+            <a href="{% url "posts:create_post" %}"><img src="{% static 'posts/images/store_url.png' %}" alt="" /></a>
+            <p>Store Url</p>
+        </li>
+        <li>
+            <a href="{% url "posts:category_list" %}"><img src="{% static 'posts/images/category_list.png' %}" alt="" /></a>
+            <p>Caegory List</p>
+        </li>
+        <li>
+            <a href="{% url "post_list" username=user.username %}"><img src="{% static 'posts/images/private_url.png' %}" alt="" /></a>
+            <p>Only Public Urls</p>
+        </li>
+        <li>
+            <a href="{% url "posts:all_post" %}"><img src="{% static 'posts/images/all_url.png' %}" alt="" /></a>
+            <p>All Urls</p>
+        </li>
+
+        <li>
+            <a href="{% url "password_change" %}"><img src="{% static 'posts/images/change_password.png' %}" alt="" /></a>
+            <p>Change Password</p>
+        </li>
+        <li>
+            <a href="{% url "logout" %}"><img src="{% static 'posts/images/logout.png' %}" alt="" /></a>
+            <p>Logout</p>
+        </li>
+    </ul>
+</div>
+
 {% endblock content %}

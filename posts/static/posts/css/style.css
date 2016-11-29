@@ -1,0 +1,69 @@
+html{
+    height: 100%;
+}
+body{
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+}
+#wrapper{
+    margin: 0 auto;
+}
+#header{
+    background-image: url("../images/header_bg.jpg");
+
+    /* Set a specific height */
+    height: 300px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.profile_name{
+    padding-top: 100px;
+}
+.profile_name h1{
+    color: #fff;
+    margin-top: 0px;
+    text-align: center;
+}
+.profile_pic{
+    width: 200px;
+    margin: 45px auto 0;
+}
+#header img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+
+}
+#main_content{
+    width: 70%;
+    margin: 150px auto 0;
+    overflow: hidden;
+
+}
+.dashboard_item_list{
+}
+.dashboard_item_list ul{
+
+}
+.dashboard_item_list ul li{
+    list-style: none;
+    float: left;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.dashboard_item_list img{
+    width: 200px;
+    height: 200px;
+    border-radius: 20px
+}
+li a {
+    color: green;
+}
+#footer{
+    height: 100px;
+}

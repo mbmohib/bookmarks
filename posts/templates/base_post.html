@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="{% static 'posts/css/normalize.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'posts/css/style.css' %}" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div class="profile_name">
+                    <h1>Emma Watson</h1>
+                </div>
+                <div class="profile_pic">
+                    <a href="{% url "posts:dashboard" %}"><img src="{% static 'posts/images/profile_pic.png' %}" alt="" /></a>
+                </div>
+            </div>
+            <div id="main_content">
+                {% block content %}{% endblock content %}
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+    </body>
+</html>

@@ -46,7 +46,7 @@ def category_list(request):
 @login_required
 def create_category(request):
     if request.method == "POST":
-        category_form = CategoryForm(request.POST)
+        category_form = CategoryForm(request.POST, user=request.user)
         if category_form.is_valid():
             new_entry = category_form.save(commit=False)
             new_entry.user = request.user

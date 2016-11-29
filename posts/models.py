@@ -11,11 +11,11 @@ class Category(models.Model):
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
 
-    def __str__(self):
-        return self.title
-
     class Meta:
         verbose_name_plural = 'category'
+
+    def __str__(self):
+        return self.title
 
 
 class UrlPost(models.Model):
@@ -27,7 +27,7 @@ class UrlPost(models.Model):
             User, related_name='user_post', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField()
     url = models.URLField()
     status = models.CharField(
                 max_length=10, choices=STATUS_CHOICES, default='public')
