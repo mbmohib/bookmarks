@@ -3,6 +3,7 @@ from datetime import date
 from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy
+from django.forms.widgets import SelectDateWidget
 
 from .models import Profile
 
@@ -47,8 +48,15 @@ class ProfileForm(forms.ModelForm):
         }
         help_texts = {
             'date_of_birth': ugettext_lazy(
-                    'Date format should be in: "year-month-date", \
-                    Ex: 1995-02-15, Age must be more than 15 years'),
+                    'Age must be more than 15 years!'),
+        }
+        DOY = ('1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987',
+               '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995',
+               '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003',
+               '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011',
+               '2012', '2013', '2014', '2015', '2016')
+        widgets = {
+            'date_of_birth': SelectDateWidget(years=DOY)
         }
 
     def clean_date_of_birth(self):

@@ -73,5 +73,5 @@ def create_post(request):
             messages.success(request, 'Url stored successfully')
             return redirect('posts:dashboard')
     else:
-        post_form = UrlPostForm(user=request.user)
+        post_form = UrlPostForm(user=request.user, initial={'url': 'http://'})
     return render(request, 'create_post.html', {'post_form': post_form})

@@ -51,11 +51,11 @@ def edit(request):
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
     return render(
-        request, "edit.html", {
+        request, "accounts/edit.html", {
             'user_form': user_form, 'profile_form': profile_form})
 
 
 @login_required
 def profile(request):
     user = request.user
-    return render(request, 'profile.html', {'user': user})
+    return render(request, 'accounts/profile.html', {'user': user})

@@ -5,5 +5,108 @@ body{
     width: 100%;
     margin: 0 auto;
     height: 100%;
-    background: red;
+}
+#wrapper{
+    width: 70%;
+    margin: 0 auto;
+}
+/* forms */
+form {
+    overflow:auto;
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+}
+.login form{
+    padding: 16px 0 16px 98px;
+}
+form p {
+    width:100%;
+    overflow:auto;
+}
+
+.login p{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 35%;
+    padding: 2.8%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+    float: right;
+    margin: 0 131px 0 0;
+
+}
+.login p a{
+    text-decoration: none;
+    color: #fff;
+}
+label {
+    float:left;
+    clear:both;
+    color: #565b5b;
+    margin-bottom:4px;
+}
+input, textarea, select {
+    clear:both;
+    float:left;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 1%;
+    border: 1px solid #ccc;
+    padding: 2%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+input:focus{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+input[type=submit], a.button {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+}
+.login input[type=submit], a.button {
+    width: 67%;
+    float: left;
+}
+.login input:focus{
+    padding: 2%;
+}
+.errorlist {
+    color:#cc0033;
+    float:left;
+    clear:both;
+    padding-left:10px;
+}
+.helptext {
+    margin:0 0 20px 0;
+    color:#aaa;
+    clear:both;
+    float:left;
+    font-size:13px;
 }
