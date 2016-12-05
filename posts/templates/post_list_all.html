@@ -1,0 +1,34 @@
+{% extends "base_post.html" %}
+{% load posts_filter %}
+
+{% block content %}
+<div class="menu-wrap">
+    <div class="menu">
+        <ul  class="clearfix">
+            {% for category in categories %}
+                <li><a href="#">{{ category.title|title }}<span class="arrow">&#9660;</span></a>
+                {% with forloop.counter0 as var %}
+                <ul class="sub-menu">
+                    {% for post in posts|lookup:var %}
+                        <li>
+                            <a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a>
+                            <div class="detail_link">
+                                <a href="{{ post.get_absolute_url }}">View</a>
+                                <a href="{{ post.get_absolute_url }}">Edit</a>
+                                <a href="{{ post.get_absolute_url }}">Delete</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                </li>
+                {% endwith %}
+                {% empty %}
+                    <h3>Sorry, no entries in this page.</h3>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="overflow">
+
+</div>
+{% endblock content %}

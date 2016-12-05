@@ -9,7 +9,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class UrlPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'status', 'user', 'category', 'updated')
-    prepopulated_fields = {"slug": ("title",)}
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)

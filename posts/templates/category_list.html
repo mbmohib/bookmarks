@@ -9,11 +9,23 @@
     {% endfor %}
 </ul>
 {% endif %}
-{% for category in categories %}
-    <ul>
-        <li>{{ category.title }}</li>
-        <li>{{ category.created }}</li>
-    </ul>
-{% endfor %}
+<div class="show_list">
+    <table>
+        <tr>
+            <th>Category Name</th>
+            <th>Creation Date</th>
+        </tr>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.title }}</td>
+                <td>{{ category.created }}</td>
+            </tr>
+            {% empty %}
+                <h3>Sorry, no entries in this page.</h3>
+        {% endfor %}
+    </table>
+
+</div>
+
 
 {% endblock content %}

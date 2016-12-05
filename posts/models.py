@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 
 # Create your models here.
@@ -10,6 +11,7 @@ class Category(models.Model):
     title = models.CharField(max_length=15)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
+    sub_cat = models.ForeignKey("self")
 
     class Meta:
         verbose_name_plural = 'category'
@@ -27,7 +29,6 @@ class UrlPost(models.Model):
             User, related_name='user_post', on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    slug = models.SlugField()
     url = models.URLField()
     status = models.CharField(
                 max_length=10, choices=STATUS_CHOICES, default='public')
@@ -41,3 +42,6 @@ class UrlPost(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("posts:detail", kwargs={"id": self.id})

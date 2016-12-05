@@ -4,7 +4,6 @@ from django import forms
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy
 from django.forms.widgets import SelectDateWidget
-
 from .models import Profile
 
 
@@ -39,6 +38,7 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
+    # date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control biginput date'}))
 
     class Meta:
         model = Profile

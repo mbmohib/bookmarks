@@ -26,7 +26,7 @@ class UrlPostForm(ModelForm):
 
     class Meta:
         model = UrlPost
-        fields = ['title', 'slug', 'url', 'status', 'note', 'category']
+        fields = ['title', 'url', 'status', 'note', 'category']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

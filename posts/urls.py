@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'create-post/$', views.create_post, name='create_post'),
     url(r'category-list/$', views.category_list, name='category_list'),
     url(r'post-list/$', views.all_post, name='all_post'),
+    url(r'(?P<id>\d+)/$', views.url_detail, name='detail'),
 ]

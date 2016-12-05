@@ -1,18 +1,20 @@
-{% extends "base.html" %}
+{% extends "base_post.html" %}
 
 {% block content %}
-<h2>{{ user.get_full_name }}</h2>
-<ul>
-    <li>Profile Picture</li>
-    <li>Username: {{ user.username }}</li>
-    <li>Firstname: {{ user.first_name }}</li>
-    <li>Lastname: {{ user.last_name }}</li>
-    <li>Email: {{ user.email }}</li>
-    <li>Birth Date: {{ user.profile.date_of_birth }}</li>
-    <li>Location: {{ user.profile.address }}</li>
-</ul>
+<div class="profile">
+    <ul>
+        <li><p>Username:</p> {{ user.username }}</li>
+        <li><p>Firstname:</p> {{ user.first_name }}</li>
+        <li><p>Lastname:</p> {{ user.last_name }}</li>
+        <li><p>Email:</p> {{ user.email }}</li>
+        <li><p>Birth Date:</p> {{ user.profile.date_of_birth }}</li>
+        <li><p>Location:</p> {{ user.profile.address }}</li>
+    </ul>
+
+
 
 <a href='{% url 'edit' %}'><p>Edit Profile</p></a>
 <a href='{% url 'logout' %}'><p>Logout</p></a>
 <a href='{% url 'password_change' %}'><p>Password Change</p></a>
+</div>
 {% endblock content %}

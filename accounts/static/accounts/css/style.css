@@ -26,12 +26,11 @@ form p {
     width:100%;
     overflow:auto;
 }
-
 .login p{
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    width: 35%;
+    width: 67%;
     padding: 2.8%;
     background: #43D1AF;
     border-bottom: 2px solid #30C29E;
@@ -39,9 +38,13 @@ form p {
     border-right-style: none;
     border-left-style: none;
     color: #fff;
-    float: right;
+    float: left;
     margin: 0 131px 0 0;
+    display: inline;
 
+}
+.login p span:nth-child(1){
+    margin-right: 50px;
 }
 .login p a{
     text-decoration: none;
@@ -89,6 +92,7 @@ input[type=submit], a.button {
     border-right-style: none;
     border-left-style: none;
     color: #fff;
+    cursor: pointer;
 }
 .login input[type=submit], a.button {
     width: 67%;

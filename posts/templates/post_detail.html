@@ -1,0 +1,22 @@
+{% extends "base_post.html" %}
+{% load posts_filter %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<ul>
+    <li>{{ post.title }}</li>
+    <li>{{ post.category }}</li>
+    <li><a href="{{ post.url }}">{{ post.url }}</a></li>
+    <li>{{ post.status }}</li>
+    <li>{{ post.note }}</li>
+    <li>{{ post.created }}</li>
+    <li>{{ post.updated }}</li>
+</ul>
+
+{% endblock content %}

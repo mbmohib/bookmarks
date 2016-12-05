@@ -6,6 +6,13 @@ body{
     margin: 0 auto;
     height: 100%;
 }
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+li{
+    list-style: none;
+}
 #wrapper{
     margin: 0 auto;
 }
@@ -42,10 +49,15 @@ body{
 #main_content{
     width: 70%;
     margin: 150px auto 0;
-    overflow: hidden;
+    clear: both;
+    height: 100%;
 
 }
+.row{
+    clear: both;
+}
 .dashboard_item_list{
+    overflow: hidden;
 }
 .dashboard_item_list ul{
 
@@ -53,17 +65,223 @@ body{
 .dashboard_item_list ul li{
     list-style: none;
     float: left;
-    margin-bottom: 20px;
-    margin-right: 20px;
+    margin: 0  2% 5% 2%;
+    width: 20%
 }
 .dashboard_item_list img{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px
 }
 li a {
     color: green;
 }
-#footer{
+.footer{
     height: 100px;
+    width: 70%;
+    margin: 0 auto;
+    float: right;
+    color: #c3c0bb;
+}
+.overflow{
+    overflow: hidden;
+    float:right
+}
+.profile a{
+    color: #876565;
+    text-decoration: none;
+}
+.profile ul{
+
+}
+.profile ul li{
+    list-style: none;
+    margin: 20px 0px
+}
+
+/*----------Url Page---------------
+-----------------------------------*/
+
+/*----- Menu Outline -----*/
+.menu-wrap {
+    width:100%;
+    box-shadow:0px 1px 3px rgba(0,0,0,0.2);
+    background:#3e3436;
+    height: 100%;
+    clear: both;
+}
+
+.menu {
+    width:1000px;
+    margin:0px auto;
+}
+
+.menu li {
+    margin:0px;
+    list-style:none;
+    font-family:'Ek Mukta';
+}
+.menu > ul > li {
+    background: #49272E;
+}
+.menu a {
+    text-decoration:none;
+    transition:all linear 0.15s;
+    color:#919191;
+
+}
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+    margin-left: 3px;
+}
+
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:left;
+    display:inline-block;
+    position:relative;
+    font-size:19px;
+    width: 220px;
+}
+
+.menu > ul > li > a {
+    padding:10px 40px;
+    display:inline-block;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.4);
+}
+
+.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+    background:#2e2728;
+}
+
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+
+.sub-menu {
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background: #3E3436;
+}
+
+.sub-menu li {
+    display:block;
+    font-size:16px;
+    width: 220px;
+    /*border: 1px solid #1f1c1c;*/
+}
+
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.sub-menu li a:hover {
+    background: #3e3436;
+}
+.detail_link > a{
+    float: left;
+    width: 5px;
+    padding: 5px 15px;
+    font-size: 10px;
+    color: #e9e1e1;
+    border: none;
+}
+/*----------Form---------------
+-----------------------------------*/
+form {
+    overflow:auto;
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 400px;
+    padding: 16px;
+    background: #F7F7F7;
+}
+form p {
+    width:100%;
+    overflow:auto;
+}
+label {
+    float:left;
+    clear:both;
+    color: #565b5b;
+    margin-bottom:4px;
+}
+input, textarea, select {
+    clear:both;
+    float:left;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 1%;
+    border: 1px solid #ccc;
+    padding: 2%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+}
+input:focus{
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+}
+input[type=submit], a.button {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+}
+.errorlist {
+    color:#cc0033;
+    float:left;
+    clear:both;
+    padding-left:10px;
+}
+.helptext {
+    margin:0 0 20px 0;
+    color:#aaa;
+    clear:both;
+    float:left;
+    font-size:13px;
+}
+.show_list{
+    width: 30%;
+    margin: 0 auto;
+}
+.show_list table{
+    margin: 50px 0px;
+}
+.show_list table tr{
+    margin: 5px;
+
+}
+.show_list table tr th{
+    padding: 20px;
+    background: #a4f9a8;
+}
+.show_list table tr td{
+    padding: 20px;
+    background: #cbf7cd;
+
 }

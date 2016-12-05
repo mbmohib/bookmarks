@@ -1,11 +1,11 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
 from .forms import CategoryForm, UrlPostForm
-from .models import Category
+from .models import Category, UrlPost
 
 
 # Create your views here.
@@ -32,7 +32,7 @@ def all_post(request):
     categories = user.user_cat.all()
     for category in categories:
         posts.append(category.urlpost_set.filter())
-    return render(request, 'post_list.html', {
+    return render(request, 'post_list_all.html', {
             'categories': categories, 'posts': posts})
 
 
@@ -75,3 +75,9 @@ def create_post(request):
     else:
         post_form = UrlPostForm(user=request.user, initial={'url': 'http://'})
     return render(request, 'create_post.html', {'post_form': post_form})
+
+
+@login_required
+def url_detail(request, id):
+    post = get_object_or_404(UrlPost, id=id)
+    return render(request, 'post_detail.html', {'post': post})
