@@ -133,7 +133,7 @@ li a {
 .menu .arrow {
     font-size:11px;
     line-height:0%;
-    margin-left: 3px;
+    margin-left: 10px;
 }
 
 /*----- Top Level -----*/
@@ -151,7 +151,7 @@ li a {
     text-shadow:0px 1px 0px rgba(0,0,0,0.4);
 }
 
-.menu > ul > li:hover > a, .menu > ul > .current-item > a {
+.menu ul li:hover {
     background:#2e2728;
 }
 
@@ -175,26 +175,26 @@ li a {
     display:block;
     font-size:16px;
     width: 220px;
-    /*border: 1px solid #1f1c1c;*/
+    float: left;
 }
-
+.sub-menu > li > span{
+    display:block;
+    font-size:16px;
+    width: 135px;
+    float: left;
+    padding: 10px 15px;
+}
+.sub-menu > li > span:nth-child(2){
+    padding: 12px 0px;
+    width: 50px;
+}
 .sub-menu li a {
-    padding:10px 30px;
     display:block;
     color: #fff;
     text-decoration: none;
 }
-
-.sub-menu li a:hover {
-    background: #3e3436;
-}
-.detail_link > a{
-    float: left;
-    width: 5px;
-    padding: 5px 15px;
-    font-size: 10px;
-    color: #e9e1e1;
-    border: none;
+.link_view > a{
+    font-size: 8px;
 }
 /*----------Form---------------
 -----------------------------------*/
@@ -266,8 +266,12 @@ input[type=submit], a.button {
     font-size:13px;
 }
 .show_list{
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
+}
+.show_list a{
+    text-decoration: none;
+    color: #4fdd38;
 }
 .show_list table{
     margin: 50px 0px;
@@ -284,4 +288,20 @@ input[type=submit], a.button {
     padding: 20px;
     background: #cbf7cd;
 
+}
+.link_profile{
+    width: 60%;
+    margin: 0 auto;
+}
+.link_profile a{
+    margin: 0 50px;
+    text-decoration: none;
+    color: #876565;
+    padding: 8px 4px;
+    float: left;
+}
+.link_profile a:hover{
+    background: #cbf7cd;
+    border-radius: 5px;
+    padding: 8px 4px;
 }

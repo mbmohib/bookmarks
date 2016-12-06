@@ -4,8 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 
-from .forms import CategoryForm, UrlPostForm
+from .forms import CategoryForm, UrlPostForm, CatedoryEditForm, UrlPostEditForm
 from .models import Category, UrlPost
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 # Create your views here.
@@ -63,6 +67,31 @@ def create_category(request):
 
 
 @login_required
+def category_edit(request, id):
+    category = get_object_or_404(Category, id=id)
+    category_edit_form = CatedoryEditForm(
+            request.POST or None, instance=category)
+    if category_edit_form.is_valid():
+        new_entry = category_edit_form.save(commit=False)
+        new_entry.save()
+        messages.success(request, 'Category created successfully')
+        return redirect('posts:category_list')
+    return render(
+        request, 'category_edit_form.html', {
+            'category_edit_form': category_edit_form
+        }
+    )
+
+
+@login_required
+def category_delete(request, id):
+    category = get_object_or_404(Category, id=id)
+    messages.success(request, "Successfully Deleted")
+    category.delete()
+    return redirect('posts:category_list')
+
+
+@login_required
 def create_post(request):
     if request.method == 'POST':
         post_form = UrlPostForm(request.POST, user=request.user)
@@ -81,3 +110,28 @@ def create_post(request):
 def url_detail(request, id):
     post = get_object_or_404(UrlPost, id=id)
     return render(request, 'post_detail.html', {'post': post})
+
+
+@login_required
+def edit_post(request, id):
+    post = get_object_or_404(UrlPost, id=id)
+    url_post_edit_form = UrlPostEditForm(
+            request.POST or None, instance=post)
+    if url_post_edit_form.is_valid():
+        new_entry = url_post_edit_form.save(commit=False)
+        new_entry.save()
+        messages.success(request, 'Post Updated successfully')
+        return redirect(post.get_absolute_url())
+    return render(
+        request, 'url_post_edit_form.html', {
+            'url_post_edit_form': url_post_edit_form
+        }
+    )
+
+
+@login_required
+def delete_post(request, id):
+    post = get_object_or_404(UrlPost, id=id)
+    post.delete()
+    messages.success(request, "Successfully Deleted")
+    return redirect('posts:all_post')

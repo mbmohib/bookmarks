@@ -14,7 +14,7 @@
             <div class="menu">
                 <ul  class="clearfix">
                     {% for category in categories %}
-                        <li><a href="#">{{ category.title|title }}<span class="arrow">&#9660;</span></a>
+                        <li><h4>{{ category.title|title }}<span class="arrow">&#9660;</span></h4>
                         {% with forloop.counter0 as var %}
                         <ul class="sub-menu">
                             {% for post in posts|lookup:var %}

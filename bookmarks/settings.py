@@ -126,3 +126,6 @@ STATIC_URL = '/static/'
 
 # Custom Settings
 LOGIN_REDIRECT_URL = reverse_lazy('posts:dashboard')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

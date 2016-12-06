@@ -1,22 +1,18 @@
 {% extends "base_post.html" %}
 {% load posts_filter %}
-
+{% block title %}All URLs{% endblock title %}
 {% block content %}
 <div class="menu-wrap">
     <div class="menu">
         <ul  class="clearfix">
             {% for category in categories %}
-                <li><a href="#">{{ category.title|title }}<span class="arrow">&#9660;</span></a>
+                <li><a href="{% url "posts:edit_category" id=category.id %}">{{ category.title|title }}<span class="arrow">&#9660;</span></a>
                 {% with forloop.counter0 as var %}
                 <ul class="sub-menu">
                     {% for post in posts|lookup:var %}
                         <li>
-                            <a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a>
-                            <div class="detail_link">
-                                <a href="{{ post.get_absolute_url }}">View</a>
-                                <a href="{{ post.get_absolute_url }}">Edit</a>
-                                <a href="{{ post.get_absolute_url }}">Delete</a>
-                            </div>
+                            <span><a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a></span>
+                            <span class="link_view"><a href="{{ post.get_absolute_url }}">View</a></span>
                         </li>
                     {% endfor %}
                     </ul>

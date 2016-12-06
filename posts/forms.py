@@ -15,7 +15,8 @@ class CategoryForm(ModelForm):
 
     def clean(self):
         try:
-            Category.objects.get(title=self.cleaned_data['title'], user=self.user)
+            Category.objects.get(
+                    title=self.cleaned_data['title'], user=self.user)
             raise forms.ValidationError("Exists already!")
         except Category.DoesNotExist:
             pass
@@ -33,3 +34,17 @@ class UrlPostForm(ModelForm):
         super(UrlPostForm, self).__init__(*args, **kwargs)
         self.fields['category'].queryset = Category.objects.filter(
                                     user=user)
+
+
+class CatedoryEditForm(ModelForm):
+
+    class Meta:
+        model = Category
+        fields = ['title']
+
+
+class UrlPostEditForm(ModelForm):
+
+    class Meta:
+        model = UrlPost
+        fields = ['title', 'url', 'status', 'note', 'category']

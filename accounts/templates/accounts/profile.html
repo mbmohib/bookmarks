@@ -1,20 +1,42 @@
 {% extends "base_post.html" %}
-
+{% block title %}{{ user.get_full_name }}{% endblock title %}
 {% block content %}
 <div class="profile">
-    <ul>
-        <li><p>Username:</p> {{ user.username }}</li>
-        <li><p>Firstname:</p> {{ user.first_name }}</li>
-        <li><p>Lastname:</p> {{ user.last_name }}</li>
-        <li><p>Email:</p> {{ user.email }}</li>
-        <li><p>Birth Date:</p> {{ user.profile.date_of_birth }}</li>
-        <li><p>Location:</p> {{ user.profile.address }}</li>
-    </ul>
+    <div class="show_list">
+        <table>
+            <tr>
+                <th>Username:</th>
+                <th>{{ user.username }}</th>
+            </tr>
+            <tr>
+                <th>Firstname:</th>
+                <th>{{ user.first_name }}</th>
+            </tr>
+            <tr>
+                <th>Lastname:</th>
+                <th>{{ user.last_name }}</th>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <th>{{ user.email }}</th>
+            </tr>
+            <tr>
+                <th>Birth Date:</th>
+                <th>{{ user.profile.date_of_birth }}</th>
+            </tr>
+            <tr>
+                <th>Location:</th>
+                <th>{{ user.profile.address }}</th>
+            </tr>
+        </table>
+    </div>
 
 
 
-<a href='{% url 'edit' %}'><p>Edit Profile</p></a>
-<a href='{% url 'logout' %}'><p>Logout</p></a>
-<a href='{% url 'password_change' %}'><p>Password Change</p></a>
+<div class="link_profile">
+    <a href='{% url 'edit' %}'><p>Edit Profile</p></a>
+    <a href='{% url 'logout' %}'><p>Logout</p></a>
+    <a href='{% url 'password_change' %}'><p>Password Change</p></a>
+</div>
 </div>
 {% endblock content %}
