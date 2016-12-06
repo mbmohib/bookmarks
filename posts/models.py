@@ -11,7 +11,7 @@ class Category(models.Model):
     title = models.CharField(max_length=15)
     created = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
-    sub_cat = models.ForeignKey("self", blank=True, null=True)
+    # sub_cat = models.ForeignKey("self", blank=True, null=True)
 
     class Meta:
         verbose_name_plural = 'category'

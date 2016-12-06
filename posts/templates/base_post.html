@@ -10,6 +10,7 @@
     <body>
         <div id="wrapper">
             <div id="header">
+                <!--<a href="{% url "posts:dashboard" %}"></a>-->
                 <div class="profile_name">
                     {% if request.user.is_authenticated %}
                         <h1>{{ request.user.get_full_name }}</h1>
@@ -17,7 +18,9 @@
                 </div>
                 <div class="profile_pic">
                     {% if request.user.profile.profile_pic %}
-                        <a href="{% url "posts:dashboard" %}"><img src="{{ request.user.profile.profile_pic.url }}" alt="" /></a>
+                        <a href="{% url "posts:dashboard" %}"><img src="{{ request.user.profile.profile_pic.url }}" title="Change Profile Picture" /></a>
+                    {% else %}
+                        <a href="{% url "posts:dashboard" %}"><img src="{% static 'posts/images/profile_pic.png' %}" title="Add Profile Picture" /></a>
                     {% endif %}
                 </div>
             </div>

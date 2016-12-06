@@ -7,7 +7,7 @@ class CategoryForm(ModelForm):
 
     class Meta:
         model = Category
-        fields = ['title', 'sub_cat']
+        fields = ['title']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
