@@ -7,27 +7,33 @@
         <title>Urls</title>
         <link rel="stylesheet" type="text/css" href="{% static 'posts/css/normalize.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'posts/css/user_url.css' %}" />
-
     </head>
     <body>
-        <div class="menu-wrap">
-            <div class="menu">
-                <ul  class="clearfix">
-                    {% for category in categories %}
-                        <li><h4>{{ category.title|title }}<span class="arrow">&#9660;</span></h4>
-                        {% with forloop.counter0 as var %}
-                        <ul class="sub-menu">
-                            {% for post in posts|lookup:var %}
-                                <li><a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a></li>
-                            {% endfor %}
-                            </ul>
-                        </li>
-                        {% endwith %}
-                        {% empty %}
-                            <h3>Sorry, no entries in this page.</h3>
-                    {% endfor %}
-                </ul>
-            </div>
+        <div class="link_list_wrap">
+            <div class="link_list">
+                {% for category in categories %}
+                    <div class="column">
+                    <h3>{{ category.title|title }}</h3>
+                    {% with forloop.counter0 as var %}
+                        {% for post in posts|lookup:var %}
+                            <address class="single_link">
+                                <a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a>
+                            </address>
+                        {% endfor %}
+                    {% endwith %}
+                    </div><!--End column -->
+                    {% empty %}
+                        <h3>Sorry, no entries in this page.</h3>
+                {% endfor %}
+            </div> <!--End link_list-->
+
+        <div class="footer">
+            <a href="{% url "posts:dashboard" %}">Home</a>
+            <a href="{% url "posts:create_category" %}">Create Category</a>
+            <a href="{% url "posts:category_list" %}">Category List</a>
+            <a href="{% url "posts:create_post" %}">Store URL</a>
+            <p>Copyright (c) 2016 Copyright Mohib All Rights Reserved.</p>
         </div>
+        </div> <!--End link_list_wrap-->
     </body>
 </html>

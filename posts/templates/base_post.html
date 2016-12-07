@@ -18,9 +18,9 @@
                 </div>
                 <div class="profile_pic">
                     {% if request.user.profile.profile_pic %}
-                        <a href="{% url "posts:dashboard" %}"><img src="{{ request.user.profile.profile_pic.url }}" title="Change Profile Picture" /></a>
+                        <a href="{% url "edit" %}"><img src="{{ request.user.profile.profile_pic.url }}" title="Change Profile Picture" /></a>
                     {% else %}
-                        <a href="{% url "posts:dashboard" %}"><img src="{% static 'posts/images/profile_pic.png' %}" title="Add Profile Picture" /></a>
+                        <a href="{% url "edit" %}"><img src="{% static 'posts/images/profile_pic.png' %}" title="Add Profile Picture" /></a>
                     {% endif %}
                 </div>
             </div>
@@ -36,9 +36,14 @@
             <div id="main_content">
                 {% block content %}{% endblock content %}
             </div>
-
+            <div class="footer_wrap">
             <div class="footer">
+                <a href="{% url "posts:dashboard" %}">Home</a>
+                <a href="{% url "posts:create_category" %}">Create Category</a>
+                <a href="{% url "posts:category_list" %}">Category List</a>
+                <a href="{% url "posts:create_post" %}">Store URL</a>
                 <p>Copyright (c) 2016 Copyright Mohib All Rights Reserved.</p>
+            </div>
             </div>
         </div>
 

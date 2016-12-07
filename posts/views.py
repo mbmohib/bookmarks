@@ -21,12 +21,13 @@ def dashboard(request):
 
 def post_list(request, username):
     posts = []
+    rows = str(4)
     user = User.objects.get(username=username)
     categories = user.user_cat.all()
     for category in categories:
         posts.append(category.urlpost_set.filter(status='public'))
     return render(request, 'post_list.html', {
-            'categories': categories, 'posts': posts})
+            'categories': categories, 'posts': posts, 'rows': rows})
 
 
 @login_required

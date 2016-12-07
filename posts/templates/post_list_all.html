@@ -2,28 +2,22 @@
 {% load posts_filter %}
 {% block title %}All URLs{% endblock title %}
 {% block content %}
-<div class="menu-wrap">
-    <div class="menu">
-        <ul  class="clearfix">
-            {% for category in categories %}
-                <li><a href="{% url "posts:edit_category" id=category.id %}">{{ category.title|title }}<span class="arrow">&#9660;</span></a>
-                {% with forloop.counter0 as var %}
-                <ul class="sub-menu">
-                    {% for post in posts|lookup:var %}
-                        <li>
-                            <span><a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a></span>
-                            <span class="link_view"><a href="{{ post.get_absolute_url }}">View</a></span>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                </li>
-                {% endwith %}
-                {% empty %}
-                    <h3>Sorry, no entries in this page.</h3>
+<div class="link_list">
+    {% for category in categories %}
+        <div class="column">
+        <h3>{{ category.title|title }}</h3>
+        {% with forloop.counter0 as var %}
+            {% for post in posts|lookup:var %}
+                <address class="single_link">
+                    <a href="{{ post.url }}" target="_blank">{{ post.title|title }}</a>
+                </address>
             {% endfor %}
-        </ul>
-    </div>
-</div>
+        {% endwith %}
+        </div><!--End column -->
+        {% empty %}
+            <h3>Sorry, no entries in this page.</h3>
+    {% endfor %}
+</div> <!--End link_list-->
 <div class="overflow">
 
 </div>
