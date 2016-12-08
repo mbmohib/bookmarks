@@ -27,6 +27,9 @@ body {
     padding: 15px 0px;
     border-top: 3px solid #0075ff;
 }
+.column h3{
+    font-family: 'Indie Flower', cursive;
+}
 .single_link{
     margin: 8px 0;
 }
@@ -36,6 +39,7 @@ body {
     font-style: normal;
     padding: 5px;
     color: #fff;
+    font-family: 'Bree Serif', serif;
 }
 .single_link a:hover{
     background-color: #00c6ff;
