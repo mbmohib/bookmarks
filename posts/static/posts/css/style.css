@@ -53,9 +53,6 @@ li{
     height: 100%;
 
 }
-.row{
-    clear: both;
-}
 .dashboard_item_list{
     overflow: hidden;
 }
@@ -125,22 +122,29 @@ li a {
 .column{
     width: 200px;
     margin: 20px 30px;
-    text-align: center;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     padding: 15px 0px;
     border-top: 3px solid #d5d5d5;
 }
+.column h3{
+    text-align: center;
+}
 .single_link{
     margin: 8px 0;
 }
 .single_link > a{
+    float: left;
     text-decoration: none;
-    text-align: center;
     font-style: normal;
     padding: 5px;
     color: #948f8f;
+}
+.single_link > a:nth-child(1){
+    color: #464643;
+    width: 125px;
+    margin-left: 5px;
 }
 .single_link a:hover{
     background-color: #dad5d5;
@@ -242,21 +246,26 @@ input[type=submit], a.button {
 }
 .link_profile{
     width: 60%;
-    margin: 0 auto 10px;
+    margin: 0 auto 30px;
 }
 .link_profile a{
-    margin: 0 50px;
+    margin: 0 30px;
     text-decoration: none;
     color: #876565;
-    padding: 0px 0px;
+    padding: 4px 8px;
     float: left;
+}
+.link_profile a:last-child{
+    margin: 0px;
 }
 .link_profile a:hover{
     background: #cbf7cd;
     border-radius: 5px;
-    padding: 0px 0px;
+    padding: 4px 8px;
 }
-
+.link_detail > a{
+    margin: 0 160px;
+}
 /* messages */
 ul.messages {
     position: relative;
