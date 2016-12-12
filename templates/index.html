@@ -1,11 +1,22 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Bookmarks!</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
     </head>
     <body>
-        <a href="{% url 'login' %}">Login</a>
-        <a href="{% url 'registration' %}">Registration</a>
+        <div class="index_content">
+            <h2>Bookmarks Your Websites! </h2>
+            <div class="login_reg">
+                <a href="{% url 'login' %}"><img src="{% static 'images/login.png' %}" alt="" /></a>
+                <a href="{% url 'registration' %}"><img src="{% static 'images/registration.png' %}" alt="" /></a>
+            </div>
+        </div>
     </body>
 </html>
+
+<!--
+-->

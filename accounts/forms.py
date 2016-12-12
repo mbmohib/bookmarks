@@ -17,6 +17,12 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if len(username) < 5:
+            raise forms.ValidationError("Username at least 5 charecters long")
+        return username
+
     def clean_password2(self):
         # Check that the two password entries match
         password1 = self.cleaned_data.get("password1")

@@ -3,15 +3,28 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>{% block title %}{% endblock title %}</title>
         <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/normalize.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/accounts.css' %}" />
     </head>
     <body>
         <div id="wrapper">
+            <div class="message">
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {{ message|safe }}
+                        <a href="#" class="close">✖</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
             {% block content %}{% endblock content %}
         </div>
-        <!--<script type="text/javascript" src="{% static 'accounts/js/jquery.js' %}"></script>-->
-        <!--<script type="text/javascript" src="{% static 'accounts/js/main.js' %}"></script>-->
+
+        <script type="text/javascript" src="{% static 'posts/js/jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'posts/js/main.js' %}"></script>
     </body>
 </html>

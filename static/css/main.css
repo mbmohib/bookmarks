@@ -1,0 +1,38 @@
+body{
+    background-image: url("../images/bg.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Pacifico-Regular.ttf');
+}
+.index_content{
+    height: 500px;
+    position: relative;
+    color: #fff;
+    font-family: 'Pacifico', cursive;
+}
+.index_content h2{
+    text-align: center;
+    margin-top: 40px;
+}
+.login_reg{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+}
+.index_content img{
+    width: 250px;
+    height: 100px;
+    margin: 20px;
+}
